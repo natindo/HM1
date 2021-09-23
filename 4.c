@@ -11,15 +11,15 @@ int main() {
     while ((c = getchar()) != '\n') {
         a[i++] = c;
         if (i > 64) { //Checking the correctness of the string length
-            printf("Введены слышком большие значения\n");
+            printf("Введено слышком много цифр\n");
             return 1;
         }
     }
 
     while (j != i) {
-        if (isdigit(a[j]) == 0 || a[j] != '|') {
+        if (isdigit(a[j]) == 0 && a[j] != '|') {
             printf("%c\n", a[j]);
-            printf("Не вводите буквы\n");
+            printf("Не вводите буквы или другие специальные символы, кроме |\n");
             return 3;
         }
         j++;
@@ -31,7 +31,7 @@ int main() {
         counter++;
     }
 
-    if(counter = i) {
+    if(counter == i) {
         printf ("Не была введена вертикальная черта\n");
         return 2;
     }
@@ -51,12 +51,15 @@ int main() {
     double basis = 0.1;
 
     while (a[counter] != '\0') {
-        res = res1 + (pow(basis, g) * (a[counter] - '0'));
+        res = res + (pow(basis, g) * (a[counter] - '0'));
         counter++;
         g++;
     }
 
-    printf("%g\n", res);
+    printf("%lf\n", res);
+    res = res + res1;
+
+    printf("%f\n", res);
 
     return 0;
 }
