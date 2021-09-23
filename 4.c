@@ -17,8 +17,7 @@ int main() {
     }
 
     while (j != i) {
-        if (isdigit(a[j]) == 0 && a[j] != '|') {
-            printf("%c\n", a[j]);
+        if (isdigit(a[j]) == 0 && a[j] != '|') { //Checking for the input of letters or characters other than |
             printf("Не вводите буквы или другие специальные символы, кроме |\n");
             return 3;
         }
@@ -31,7 +30,7 @@ int main() {
         counter++;
     }
 
-    if(counter == i) {
+    if(counter == i) { //Checking for input |
         printf ("Не была введена вертикальная черта\n");
         return 2;
     }
@@ -40,7 +39,7 @@ int main() {
     i = counter - 1;
     int g = 0;
 
-    while (i >= 0) {
+    while (i >= 0) { //Counting the integer part
         res1 = res1 + (pow(10, g) * (a[i] - '0'));
         i--;
         g++;
@@ -50,16 +49,16 @@ int main() {
     counter++;
     double basis = 0.1;
 
-    while (a[counter] != '\0') {
+    while (a[counter] != '\0') { //Counting the fractional part
         res = res + (pow(basis, g) * (a[counter] - '0'));
         counter++;
         g++;
     }
 
-    printf("%lf\n", res);
     res = res + res1;
+    g--;
 
-    printf("%f\n", res);
+    printf("%.*f\n", g, res);
 
     return 0;
 }
