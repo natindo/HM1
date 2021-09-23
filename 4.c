@@ -59,7 +59,8 @@ int main() {
     printf("%lf\n", res);
     res = res + res1;
 
-    printf("%f\n", res);
+    g--;
+    printf("%.*f\n", g, res);
 
     return 0;
 }
